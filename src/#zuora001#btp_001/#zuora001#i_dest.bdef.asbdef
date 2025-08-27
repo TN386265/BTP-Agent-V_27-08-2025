@@ -1,0 +1,39 @@
+unmanaged implementation in class /zuora001/bp_i_dest unique;
+strict ( 2 ); //Uncomment this line in order to enable strict mode 2. The strict mode has two variants (strict(1), strict(2)) and is prerequisite to be future proof regarding syntax and to be able to release your BO.
+
+define behavior for /ZUORA001/I_DEST alias Dest
+//persistent table /zuora001/t_dest
+lock master
+authorization master ( global )
+//etag master <field_name>
+{
+  create;
+  update;
+  delete;
+  field ( readonly : update ) CustomerId, ValidFrom;
+  field ( readonly : update ) Destinationid;
+  mapping for /zuora001/t_dest
+    {
+      CustomerId         = customer_id;
+      Destinationid      = destinationid;
+      ValidFrom          = valid_from;
+      ValidTo            = valid_to;
+      DestinationName    = destination_name;
+      Description        = description;
+      CapabilityId       = capability_id;
+      DestUsrl           = dest_usrl;
+      DestType           = dest_type;
+      ProxyType          = proxy_type;
+      AuthType           = auth_type;
+      AuthUser           = auth_user;
+      AuthPwd            = auth_pwd;
+      SystemId           = system_id;
+      LandScape          = land_scape;
+      Status             = status;
+      CreatedBy          = created_by;
+      CreatedAt          = created_at;
+      LocalChangedBy     = local_changed_by;
+      LocalLastChangedAt = local_last_changed_at;
+      LastChangedAt      = last_changed_at;
+    }
+}

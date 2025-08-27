@@ -1,0 +1,35 @@
+unmanaged implementation in class /zuora001/bp_i_mapv unique;
+strict ( 2 );
+
+define behavior for /ZUORA001/I_MAPV alias Mapv
+//persistent table /zuora001/t_mapv
+lock master
+authorization master ( global )
+//etag master <field_name>
+{
+  create;
+  update;
+  delete;
+  field ( readonly ) ValueId;
+  field ( readonly : update ) CustomerId, RuleId, ConditionSeq, TargetSeq, ValidFrom;
+  mapping for /zuora001/t_mapv
+    {
+      CustomerId         = customer_id;
+      RuleId             = rule_id;
+      ConditionSeq       = condition_seq;
+      TargetSeq          = target_seq;
+      ValueId            = value_id;
+      ValidFrom          = valid_from;
+      ValidTo            = valid_to;
+      SourceValue        = source_value;
+      TargetValue        = target_value;
+      SourceCondition    = source_condition;
+      TargetCondition    = target_condition;
+      Status             = status;
+      CreatedBy          = created_by;
+      CreatedAt          = created_at;
+      LocalChangedBy     = local_changed_by;
+      LocalLastChangedAt = local_last_changed_at;
+      LastChangedAt      = last_changed_at;
+    }
+}

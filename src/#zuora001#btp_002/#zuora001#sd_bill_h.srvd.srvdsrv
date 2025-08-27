@@ -1,0 +1,12 @@
+@EndUserText.label: 'Billing Header'
+define service /ZUORA001/SD_BILL_H {
+  expose /ZUORA001/C_BL_HG as CreatorDataIn;
+  expose /ZUORA001/C_BL_IG as BillingDataIn;
+  expose /ZUORA001/C_BL_VG as CCardDataIn;
+  expose /ZUORA001/C_BL_CG as ConditionDataIn;
+  expose /ZUORA001/C_BL_EG as Errors;
+  expose /ZUORA001/C_BL_NG as NFMetalItms;
+  expose /ZUORA001/C_BL_RG as Return;
+  expose /ZUORA001/C_BL_SG as Success;
+  expose /ZUORA001/C_BL_TG as TextDataIn;
+}

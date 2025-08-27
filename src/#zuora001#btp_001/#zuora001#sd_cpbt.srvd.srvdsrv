@@ -1,0 +1,5 @@
+@EndUserText.label: 'Capability Master service definition'
+define service /ZUORA001/SD_CPBT {
+  expose /ZUORA001/C_CPBT  as CapbMas;
+  expose /ZUORA001/I_CPBTU as CapabUnique;
+}

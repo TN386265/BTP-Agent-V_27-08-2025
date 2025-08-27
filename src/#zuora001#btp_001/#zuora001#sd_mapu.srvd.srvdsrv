@@ -1,0 +1,4 @@
+@EndUserText.label: 'Value mapping JSON service definition'
+define service /ZUORA001/SD_MAPU {
+  expose /ZUORA001/C_MAPU as Mapu;
+}

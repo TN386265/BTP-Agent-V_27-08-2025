@@ -1,0 +1,4 @@
+@EndUserText.label: 'Servcie Definition for Value Mapping'
+define service /ZUORA001/SD_MAPV {
+  expose /ZUORA001/C_MAPV as Mapv;
+}

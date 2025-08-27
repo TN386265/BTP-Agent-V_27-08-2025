@@ -1,0 +1,49 @@
+unmanaged implementation in class /zuora001/bp_i_mapc0 unique;
+strict ( 2 );
+
+define behavior for /ZUORA001/I_MAPC0 alias Mapc
+//late numbering
+lock master
+authorization master ( global )
+//etag master <field_name>
+{
+  create;
+  update;
+  delete;
+  field ( readonly ) ConditionSeq, TargetSeq;
+  field ( readonly : update ) CustomerId, Destinationid, DestinationName, CapabilityId, RuleId, ValidFrom;
+
+  mapping for /zuora001/t_mapc
+    {
+      CustomerId         = customer_id;
+      Destinationid      = destinationid;
+      DestinationName    = destination_name;
+      CapabilityId       = capability_id;
+      RuleId             = rule_id;
+      ConditionSeq       = condition_seq;
+      TargetSeq          = target_seq;
+      ValidFrom          = valid_from;
+      ValidTo            = valid_to;
+      RuleDescription    = rule_description;
+      ActivatedDate      = activated_date;
+      ExpiryDate         = expiry_date;
+      SourceField        = source_field;
+      TargetField        = target_field;
+      SourceValue        = source_value;
+      TargetValue        = target_value;
+      MappingType        = mapping_type;
+      SourceData         = source_data;
+      TargetData         = target_data;
+      SourceCondition    = source_condition;
+      ObjType            = obj_type;
+      ValueType          = value_type;
+      RangeEndValue      = range_end_value;
+      Status             = status;
+      CreatedBy          = created_by;
+      CreatedAt          = created_at;
+      LocalChangedBy     = local_changed_by;
+      LocalLastChangedAt = local_last_changed_at;
+      LastChangedAt      = last_changed_at;
+    }
+
+}

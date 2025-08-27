@@ -1,0 +1,494 @@
+unmanaged implementation in class /zuora001/bp_r_je_h unique;
+strict ( 1 );
+
+define behavior for /ZUORA001/R_JE_H //alias <alias_name>
+//late numbering
+lock master
+authorization master ( instance )
+//etag master <field_name>
+{
+  create;
+  update;
+  delete;
+  field ( readonly ) je_uid, customer_id, JeDocNumber;
+  association CURRENCYAMOUNT { create; }
+  association ACCOUNTGL { create; }
+  association ACCOUNTRECEIVABLE { create; }
+  association ACCOUNTPAYABLE { create; }
+  association RETURN { create; }
+  association EXTENSION1 { create; }
+  association EXTENSION2 { create; }
+  association ACCOUNTTAX { create; }
+  mapping for /zuora001/t_je_h
+    {
+
+      // Table Fields
+      je_uid             = je_uid; // UUID for the journal entry
+      customer_id        = customer_id; // Customer ID
+      destination_system = destination_system; // Destination System Name
+      destination_name   = destination_name; // Destination Name
+      LandScape          = land_scape; // landscape
+      JeDocNumber        = je_doc_number; // Journal Entry Document Number
+      ObjType            = obj_type; // Object Type
+      ObjKey             = obj_key; // Object Key
+      ObjSys             = obj_sys; // Object System
+      BusAct             = bus_act; // Business Activity
+      Username           = username; // Username in Journal Entry
+      HeaderTxt          = header_txt; // Header Text
+      CompCode           = comp_code; // Company Code
+      DocDate            = doc_date; // Document Date
+      PstngDate          = pstng_date; // Posting Date
+      TransDate          = trans_date; // Transaction Date
+      FiscYear           = fisc_year; // Fiscal Year
+      FisPeriod          = fis_period; // Fiscal Period
+      DocType            = doc_type; // Document Type
+      RefDocNo           = ref_doc_no; // Reference Document Number
+      AcDocNo            = ac_doc_no; // Accounting Document Number
+      ObjKeyR            = obj_key_r; // Reverse Object Key
+      ReasonRev          = reason_rev; // Reason for Reversal
+      CompoAcc           = compo_acc; // Component Account
+      RefDocNoLong       = ref_doc_no_long; // Long Reference Document Number
+      AccPrinciple       = acc_principle; // Accounting Principle
+      NegPostng          = neg_postng; // Negative Posting Indicator
+      ObjKeyInv          = obj_key_inv; // Invoice Object Key
+      BillCategory       = bill_category; // Billing Category
+      Vatdate            = vatdate; // VAT Date
+      InvoiceRecDate     = invoice_rec_date; // Invoice Received Date
+      EcsEnv             = ecs_env; // ECS Environment
+      PartialRev         = partial_rev; // Partial Reversal
+      DocStatus          = doc_status; // Document Status
+      ExchangRate        = exchange_rate;
+    }
+}
+
+define behavior for /ZUORA001/R_JE_C //alias <alias_name>
+//late numbering
+lock dependent by documentheader
+authorization dependent by documentheader
+//etag master <field_name>
+{
+  update;
+  delete;
+  field ( readonly ) je_uid, customer_id, JeDocNumber;
+  association documentheader;
+
+  mapping for /zuora001/t_je_c
+    {
+      Je_Uid             = je_uid;
+      customer_id        = customer_id; // Customer ID
+      destination_system = destination_system; // Destination System Name
+      destination_name   = destination_name; // Destination Name
+      JeDocNumber        = je_doc_number; // Journal Entry Document Number
+      ItemnoAcc          = itemno_acc;
+      CurrType           = curr_type;
+      Currency           = currency;
+      CurrencyIso        = currency_iso;
+      AmtDoccur          = amt_doccur;
+      ExchRate           = exch_rate;
+      ExchRateV          = exch_rate_v;
+      AmtBase            = amt_base;
+      DiscBase           = disc_base;
+      DiscAmt            = disc_amt;
+      TaxAmt             = tax_amt;
+    }
+}
+
+define behavior for /ZUORA001/R_JE_I //alias <alias_name>
+//late numbering
+lock dependent by documentheader
+authorization dependent by documentheader
+//etag master <field_name>
+{
+  update;
+  delete;
+  field ( readonly ) je_uid, customer_id, JeDocNumber;
+  association documentheader;
+
+  mapping for /zuora001/t_je_i
+    {
+      je_uid                 = je_uid;
+      CUSTOMER_ID            = customer_id;
+      DESTINATION_SYSTEM     = destination_system;
+      DESTINATION_NAME       = destination_name;
+      JeDocNumber            = je_doc_number;
+      ItemnoAcc              = itemno_acc;
+      GLACCOUNT              = gl_account;
+      ITEMTEXT               = item_text;
+      STATCON                = stat_con;
+      LOGPROC                = log_proc;
+      ACDOCNO                = ac_doc_no;
+      REFKEY1                = ref_key_1;
+      REFKEY2                = ref_key_2;
+      REFKEY3                = ref_key_3;
+      ACCTKEY                = acct_key;
+      ACCTTYPE               = acct_type;
+      DOCTYPE                = doc_type;
+      COMPCODE               = comp_code;
+      BUSAREA                = bus_area;
+      FUNCAREA               = func_area;
+      PLANT                  = plant;
+      FISPERIOD              = fis_period;
+      FISCYEAR               = fisc_year;
+      PSTNGDATE              = pstng_date;
+      VALUEDATE              = value_date;
+      FMAREA                 = fm_area;
+      CUSTOMER               = customer;
+      CSHDISIND              = cshdis_ind;
+      VENDORNO               = vendor_no;
+      ALLOCNMBR              = alloc_nmbr;
+      TAXCODE                = tax_code;
+      TAXJURCODE             = taxjurcode;
+      EXTOBJECTID            = ext_object_id;
+      BUSSCENARIO            = bus_scenario;
+      COSTOBJECT             = costobject;
+      COSTCENTER             = costcenter;
+      ACTTYPE                = acttype;
+      PROFITCTR              = profit_ctr;
+      PARTPRCTR              = part_prctr;
+      NETWORK                = network;
+      WBSELEMENT             = wbs_element;
+      ORDERID                = orderid;
+      ORDERITNO              = order_itno;
+      ROUTINGNO              = routing_no;
+      ACTIVITY               = activity;
+      CONDTYPE               = cond_type;
+      CONDCOUNT              = cond_count;
+      CONDSTNO               = cond_st_no;
+      FUND                   = fund;
+      FUNDSCTR               = funds_ctr;
+      CMMITEM                = cmm_item;
+      COBUSPROC              = co_busproc;
+      ASSETNO                = asset_no;
+      SUBNUMBER              = sub_number;
+      BILLTYPE               = bill_type;
+      SALESORD               = sales_ord;
+      SORDITEM               = s_ord_item;
+      DISTRCHAN              = distr_chan;
+      DIVISION               = division;
+      SALESORG               = salesorg;
+      SALESGRP               = sales_grp;
+      SALESOFF               = sales_off;
+      SOLDTO                 = sold_to;
+      DECREIND               = de_cre_ind;
+      PELPRCTR               = p_el_prctr;
+      XMFRW                  = xmfrw;
+      QUANTITY               = quantity;
+      BASEUOM                = base_uom;
+      BASEUOMISO             = base_uom_iso;
+      INVQTY                 = inv_qty;
+      INVQTYSU               = inv_qty_su;
+      SALESUNIT              = sales_unit;
+      SALESUNITISO           = sales_unit_iso;
+      POPRQNT                = po_pr_qnt;
+      POPRUOM                = po_pr_uom;
+      POPRUOMISO             = po_pr_uom_iso;
+      ENTRYQNT               = entry_qnt;
+      ENTRYUOM               = entry_uom;
+      ENTRYUOMISO            = entry_uom_iso;
+      VOLUME                 = volume;
+      VOLUMEUNIT             = volumeunit;
+      VOLUMEUNITISO          = volumeunit_iso;
+      GROSSWT                = gross_wt;
+      NETWEIGHT              = net_weight;
+      UNITOFWT               = unit_of_wt;
+      UNITOFWTISO            = unit_of_wt_iso;
+      ITEMCAT                = item_cat;
+      MATERIAL               = material;
+      MATLTYPE               = matl_type;
+      MVTIND                 = mvt_ind;
+      REVALIND               = reval_ind;
+      ORIGGROUP              = orig_group;
+      ORIGMAT                = orig_mat;
+      SERIALNO               = serial_no;
+      PARTACCT               = part_acct;
+      TRPARTBA               = tr_part_ba;
+      TRADEID                = trade_id;
+      VALAREA                = val_area;
+      VALTYPE                = val_type;
+      ASVALDATE              = asval_date;
+      PONUMBER               = po_number;
+      POITEM                 = po_item;
+      ITMNUMBER              = itm_number;
+      CONDCATEGORY           = cond_category;
+      FUNCAREALONG           = func_area_long;
+      CMMITEMLONG            = cmm_item_long;
+      GRANTNBR               = grant_nbr;
+      CSTRANST               = cs_trans_t;
+      MEASURE                = measure;
+      SEGMENT                = segment;
+      PARTNERSEGMENT         = partner_segment;
+      RESDOC                 = res_doc;
+      RESITEM                = res_item;
+      BILLINGPERIODSTARTDATE = billing_period_start_date;
+      BILLINGPERIODENDDATE   = billing_period_end_date;
+      PPAEXIND               = ppa_ex_ind;
+      FASTPAY                = fastpay;
+      PARTNERGRANTNBR        = partner_grant_nbr;
+      BUDGETPERIOD           = budget_period;
+      PARTNERBUDGETPERIOD    = partner_budget_period;
+      PARTNERFUND            = partner_fund;
+      ITEMNOTAX              = itemno_tax;
+      housebank              = housebank;
+      housebankaccount       = housebankaccount;
+    }
+
+}
+//------------------------------------------------------------------>
+define behavior for /ZUORA001/R_JE_Z
+// Late numbering if applicable
+lock dependent by documentheader
+authorization dependent by documentheader
+// ETag master field if required
+{
+  update;
+  delete;
+
+  field ( readonly ) je_uid, customer_id, JeDocNumber;
+  association documentheader;
+  mapping for /zuora001/t_je_z
+    {
+
+      // Key Fields
+      je_uid            = je_uid;
+      customer_id       = customer_id;
+      JeDocNumber       = je_doc_number;
+      // Non-key Fields
+      DestinationSystem = destination_system;
+      DestinationName   = destination_name;
+      ItemnoAcc         = itemno_acc;
+      Customer          = customer;
+      GlAccount         = gl_account;
+      RefKey1           = ref_key_1;
+      RefKey2           = ref_key_2;
+      RefKey3           = ref_key_3;
+      CompCode          = comp_code;
+      BusArea           = bus_area;
+      TaxCode           = tax_code;
+      Pmnttrms          = pmnttrms;
+      BlineDate         = bline_date;
+      DsctDays1         = dsct_days1;
+      DsctDays2         = dsct_days2;
+      Netterms          = netterms;
+      DsctPct1          = dsct_pct1;
+      DsctPct2          = dsct_pct2;
+      PymtMeth          = pymt_meth;
+      Pmtmthsupl        = pmtmthsupl;
+      PaymtRef          = paymt_ref;
+      DunnKey           = dunn_key;
+      DunnBlock         = dunn_block;
+      PmntBlock         = pmnt_block;
+      VatRegNo          = vat_reg_no;
+      AllocNmbr         = alloc_nmbr;
+      ItemText          = item_text;
+      PartnerBk         = partner_bk;
+      Housebank         = housebank;
+      Housebankaccount  = housebankaccount;
+    }
+}
+define behavior for /ZUORA001/R_JE_V alias VendorJE
+lock dependent by documentheader
+authorization dependent by documentheader
+{
+  update;
+  delete;
+
+  field ( readonly ) je_uid, customer_id, JeDocNumber;
+
+  // Association to DOCUMENTHEADER
+  association documentheader;
+
+  // Mapping to the table /ZUORA001/T_JE_V
+  mapping for /zuora001/t_je_v
+    {
+
+      // Key Fields
+      je_uid            = je_uid;
+      customer_id       = customer_id;
+      JeDocNumber       = je_doc_number;
+      // Non-key Fields
+      DestinationSystem = destination_system;
+      DestinationName   = destination_name;
+      ItemnoAcc         = itemno_acc;
+      VendorNo          = vendor_no;
+      GlAccount         = gl_account;
+      RefKey1           = ref_key_1;
+      RefKey2           = ref_key_2;
+      RefKey3           = ref_key_3;
+      CompCode          = comp_code;
+      BusArea           = bus_area;
+      Pmnttrms          = pmnttrms;
+      BlineDate         = bline_date;
+      DsctDays1         = dsct_days1;
+      DsctDays2         = dsct_days2;
+      Netterms          = netterms;
+      DsctPct1          = dsct_pct1;
+      DsctPct2          = dsct_pct2;
+      PymtMeth          = pymt_meth;
+      Pmtmthsupl        = pmtmthsupl;
+      PmntBlock         = pmnt_block;
+      ScbankInd         = scbank_ind;
+      Supcountry        = supcountry;
+      SupcountryIso     = supcountry_iso;
+      BllsrvInd         = bllsrv_ind;
+      AllocNmbr         = alloc_nmbr;
+      ItemText          = item_text;
+      PoSubNo           = po_sub_no;
+      PoCheckdg         = po_checkdg;
+      PoRefNo           = po_ref_no;
+      PymtCurIso        = pymt_cur_iso;
+      SpGlInd           = sp_gl_ind;
+      TaxCode           = tax_code;
+      TaxDate           = tax_date;
+      Taxjurcode        = taxjurcode;
+      AltPayee          = alt_payee;
+      AltPayeeBank      = alt_payee_bank;
+      PartnerBk         = partner_bk;
+      BankId            = bank_id;
+      PartnerGuid       = partner_guid;
+      ProfitCtr         = profit_ctr;
+      Fund              = fund;
+      WTaxCode          = w_tax_code;
+      Businessplace     = businessplace;
+      Sectioncode       = sectioncode;
+      Instr1            = instr1;
+      Instr2            = instr2;
+      Instr3            = instr3;
+      Instr4            = instr4;
+      Branch            = branch;
+      PymtCur           = pymt_cur;
+      PymtAmt           = pymt_amt;
+      GrantNbr          = grant_nbr;
+      Measure           = measure;
+      Housebankacctid   = housebankacctid;
+      BudgetPeriod      = budget_period;
+      PpaExInd          = ppa_ex_ind;
+      PartBusinessplace = part_businessplace;
+      Housebank         = housebank;
+      Housebankaccount  = housebankaccount;
+    }
+}
+
+//*------------------------------------------------------------------->
+define behavior for /ZUORA001/R_JE_R //alias <alias_name>
+//late numbering
+lock dependent by documentheader
+authorization dependent by documentheader
+//etag master <field_name>
+{
+  update;
+  delete;
+  field ( readonly ) je_uid, customer_id, JeDocNumber;
+  association documentheader;
+  mapping for /zuora001/t_je_r
+    {
+
+      // Key Fields
+      je_uid             = je_uid;
+      CUSTOMER_ID        = customer_id;
+      DESTINATION_SYSTEM = destination_system;
+      DESTINATION_NAME   = destination_name;
+      JeDocNumber        = je_doc_number;
+      Type               = type;
+      ResNumber          = res_number;
+      ResId              = res_id;
+      Message            = message;
+      LogNo              = log_no;
+      LogMsgNo           = log_msg_no;
+      MessageV1          = message_v1;
+      MessageV2          = message_v2;
+      MessageV3          = message_v3;
+      MessageV4          = message_v4;
+      ResParameter       = res_parameter;
+      ResRow             = res_row;
+      Field              = field;
+      ResSystem          = res_system;
+    }
+}
+
+
+define behavior for /ZUORA001/R_JE_EXTH //alias <alias_name>
+//late numbering
+lock dependent by documentheader
+authorization dependent by documentheader
+//etag master <field_name>
+{
+  update;
+  delete;
+  field ( readonly ) je_uid, customer_id, JeDocNumber;
+  association documentheader;
+  mapping for /zuora001/t_exth
+    {
+
+      // Key Fields
+      je_uid             = je_uid;
+      CUSTOMER_ID        = customer_id;
+      DESTINATION_SYSTEM = destination_system;
+      DESTINATION_NAME   = destination_name;
+      JeDocNumber        = je_doc_number;
+      Field1             = field1;
+      Field2             = FIELD2;
+      Field3             = field3;
+      Field4             = FIELD4;
+    }
+}
+
+define behavior for /ZUORA001/R_JE_EXTI //alias <alias_name>
+//late numbering
+lock dependent by documentheader
+authorization dependent by documentheader
+//etag master <field_name>
+{
+  update;
+  delete;
+  field ( readonly ) je_uid, customer_id, JeDocNumber;
+  association documentheader;
+  mapping for /zuora001/t_exti
+    {
+
+      // Key Fields
+      je_uid             = je_uid;
+      CUSTOMER_ID        = customer_id;
+      DESTINATION_SYSTEM = destination_system;
+      DESTINATION_NAME   = destination_name;
+      JeDocNumber        = je_doc_number;
+      Structure          = Structure;
+      VALUEPART1         = VALUEPART1;
+      VALUEPART2         = VALUEPART2;
+      VALUEPART3         = VALUEPART3;
+      VALUEPART4         = VALUEPART4;
+    }
+}
+
+define behavior for /ZUORA001/R_JE_T //alias <alias_name>
+//late numbering
+lock dependent by documentheader
+authorization dependent by documentheader
+//etag master <field_name>
+{
+  update;
+  delete;
+  field ( readonly ) je_uid, customer_id, JeDocNumber;
+  association documentheader;
+  mapping for /zuora001/t_je_t
+    {
+
+      // Key Fields
+      je_uid             = je_uid;
+      CUSTOMER_ID        = customer_id;
+      DESTINATION_SYSTEM = destination_system;
+      DESTINATION_NAME   = destination_name;
+      JeDocNumber        = je_doc_number;
+      ItemnoAcc          = itemno_acc;
+      GlAccount          = gl_account;
+      CondKey            = cond_key;
+      AcctKey            = acct_key;
+      TaxCode            = tax_code;
+      TaxRate            = tax_rate;
+      TaxDate            = tax_date;
+      Taxjurcode         = taxjurcode;
+      TaxjurcodeDeep     = taxjurcode_deep;
+      TaxjurcodeLevel    = taxjurcode_level;
+      ItemnoTax          = itemno_tax;
+      DirectTax          = direct_tax;
+    }
+}

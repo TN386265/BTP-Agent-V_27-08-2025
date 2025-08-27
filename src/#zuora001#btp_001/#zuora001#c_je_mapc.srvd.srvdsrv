@@ -1,0 +1,4 @@
+@EndUserText.label: 'Service Definition for Valuemapping'
+define service /ZUORA001/C_JE_MAPC {
+  expose /ZUORA001/C_JE_MAPC;
+}
