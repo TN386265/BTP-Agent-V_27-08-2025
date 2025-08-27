@@ -1,0 +1,37 @@
+@AbapCatalog.viewEnhancementCategory: [#NONE]
+@AccessControl.authorizationCheck: #NOT_REQUIRED
+@EndUserText.label: 'Interface for dest - base vw entity'
+@Metadata.ignorePropagatedAnnotations: true
+@ObjectModel.usageType:{
+    serviceQuality: #X,
+    sizeCategory: #S,
+    dataClass: #MIXED
+}
+
+
+
+define view entity /ZUORA001/I_DESTB
+  as select from /zuora001/t_dest as _destb
+{
+  key customer_id           as CustomerId,
+  key destinationid         as Destinationid,
+  key valid_from            as ValidFrom,
+      valid_to              as ValidTo,
+      destination_name      as DestinationName,
+      description           as Description,
+      capability_id         as CapabilityId,
+      dest_usrl             as DestUsrl,
+      dest_type             as DestType,
+      proxy_type            as ProxyType,
+      auth_type             as AuthType,
+      auth_user             as AuthUser,
+      auth_pwd              as AuthPwd,
+      system_id             as SystemId,
+      land_scape            as LandScape,
+      status                as Status,
+      created_by            as CreatedBy,
+      created_at            as CreatedAt,
+      local_changed_by      as LocalChangedBy,
+      local_last_changed_at as LocalLastChangedAt,
+      last_changed_at       as LastChangedAt
+}

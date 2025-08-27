@@ -1,0 +1,435 @@
+unmanaged implementation in class /zuora001/bp_r_bl_h unique ;
+strict ( 2 );
+
+define behavior for /ZUORA001/R_BL_H //alias <alias_name>
+//late numbering
+lock master
+authorization master ( instance )
+//etag master <field_name>
+{
+  create ( authorization : global );
+  update;
+  delete;
+  field ( readonly ) je_uid, customer_id;
+  association CONDITIONDATAIN { create; }
+  association ERRORS { create; }
+  association BILLINGDATAIN { create;}
+  association RETURN { create; }
+  association NFMETALLITMS { create; }
+  association SUCCESS { create; }
+  association TEXTDATAIN { create; }
+  association CCARDDATAIN { create; }
+ mapping for /zuora001/t_bl_h
+{
+  // Table Fields
+  je_uid              = je_uid;               // Unique ID for Billing Header
+  customer_id         = customer_id;          // Customer ID
+  bl_doc_number       = bl_doc_number;        // Billing Document Number
+  destination_system  = destination_system;   // Destination System
+  destination_name    = destination_name;     // Destination Name
+  land_scape          = land_scape;           // Landscape (DEV/QAS/PRD)
+  created_by          = created_by;           // Created By
+  created_on          = created_on;           // Created On (Date/Time)
+  testrun             = testrun;              // Test Run Flag
+  posting_type        = posting_type;         // Posting Type (F2, etc.)
+  Username  = Username;
+  lastchangedat       = lastchangedat;        // UTC Last Changed DateTime
+  locallastchangedat  = locallastchangedat;   // Local Last Changed DateTime
+}
+
+}
+
+define behavior for /ZUORA001/R_BL_C //alias <alias_name>
+//late numbering
+lock dependent by CREATORDATAIN
+authorization dependent by CREATORDATAIN
+//etag master <field_name>
+{
+  update;
+  delete;
+  field ( readonly ) je_uid, customer_id;
+  association CREATORDATAIN;
+mapping for /zuora001/t_bl_c
+{
+  // Key Fields
+  je_uid         = je_uid;           // UUID for the billing entry
+  customer_id    = customer_id;      // Customer ID
+  bl_doc_number  = bl_doc_number;    // Billing Document Number
+
+  // Condition Fields
+  destination_system = destination_system;   // Destination System
+  destination_name   = destination_name;     // Destination Name
+  data_index         = data_index;           // Data Index
+  cond_type          = cond_type;            // Condition Type
+  cond_value         = cond_value;           // Condition Value
+  cond_curr          = cond_curr;            // Condition Currency
+  cond_p_unt         = cond_p_unt;           // Price Unit
+  cond_d_unt         = cond_d_unt;           // Denomination Unit
+}
+
+}
+
+define behavior for /ZUORA001/R_BL_E //alias <alias_name>
+//late numbering
+lock dependent by CREATORDATAIN
+authorization dependent by CREATORDATAIN
+//etag master <field_name>
+{
+  update;
+  delete;
+  field ( readonly ) je_uid, customer_id;
+  association CREATORDATAIN;
+mapping for /zuora001/t_bl_e
+{
+  // Key Fields
+  je_uid            = je_uid;            // UUID
+  customer_id       = customer_id;       // Customer ID
+  bl_doc_number     = bl_doc_number;     // Billing Document Number
+
+  // System Info
+  destination_system = destination_system;  // Destination System
+  destination_name   = destination_name;    // Destination Name
+
+  // Error Details
+  ref_doc        = ref_doc;           // Reference Document
+  ref_doc_item   = ref_doc_item;      // Reference Item
+  type           = type;              // Message Type
+  id             = id;                // Message Class
+  number_n       = number_n;          // Message Number
+  message        = message;           // Error Message Text
+  log_no         = log_no;            // Application Log Number
+  log_msg_no     = log_msg_no;        // Message Number in Log
+  message_v1     = message_v1;        // Message Variable 1
+  message_v2     = message_v2;        // Message Variable 2
+  message_v3     = message_v3;        // Message Variable 3
+  message_v4     = message_v4;        // Message Variable 4
+}
+
+}
+
+define behavior for /ZUORA001/R_BL_I //alias <alias_name>
+//late numbering
+lock dependent by CREATORDATAIN
+authorization dependent by CREATORDATAIN
+//etag master <field_name>
+{
+  update;
+  delete;
+  field ( readonly ) je_uid, customer_id;
+  association CREATORDATAIN;
+mapping for /zuora001/t_bl_i
+{
+  // Key fields
+  je_uid          = je_uid;
+  customer_id     = customer_id;
+  bl_doc_number   = bl_doc_number;
+
+  // System Info
+  destination_system = destination_system;
+  destination_name   = destination_name;
+
+  // Sales and Order Details
+  salesorg         = salesorg;
+  distr_chan       = distr_chan;
+  division         = division;
+  doc_type         = doc_type;
+  ordbilltyp       = ordbilltyp;
+  bill_date        = bill_date;
+  sold_to          = sold_to;
+  item_categ       = item_categ;
+  acctasgnmt       = acctasgnmt;
+  price_date       = price_date;
+  country          = country;
+  plant            = plant;
+  bill_to          = bill_to;
+  payer            = payer;
+  ship_to          = ship_to;
+  ref_doc          = ref_doc;
+  ref_item         = ref_item;
+
+  // Material and Quantity
+  material         = material;
+  req_qty          = req_qty;
+  currency         = currency;
+  short_text       = short_text;
+  taxcl_1mat       = taxcl_1mat;
+  stat_group       = stat_group;
+  no_matmast       = no_matmast;
+
+  // Address and Customer Info
+  addr_no          = addr_no;
+  title            = title;
+  name             = name;
+  name_2           = name_2;
+  postl_code       = postl_code;
+  consumctry       = consumctry;
+  city             = city;
+  district         = district;
+  street           = street;
+  region           = region;
+
+  // Additional Sales Info
+  prod_hier        = prod_hier;
+  sales_unit       = sales_unit;
+  profit_ctr       = profit_ctr;
+  taxjurcode       = taxjurcode;
+  purch_ord        = purch_ord;
+
+  // Document Tracking
+  doc_number       = doc_number;
+  itm_number       = itm_number;
+  origindoc        = origindoc;
+  item             = item;
+  created_by       = created_by;
+
+  // Material External Fields
+  material_external = material_external;
+  material_guid     = material_guid;
+  material_version  = material_version;
+  material_long     = material_long;
+
+  // Incoterms & Conditions
+  incoterms1       = incoterms1;
+  incoterms2       = incoterms2;
+  incoterms2l      = incoterms2l;
+  incoterms3l      = incoterms3l;
+  incotermsv       = incotermsv;
+  exchange_rate    = exchange_rate;
+
+  // Payment & Hierarchy Info
+  payment_terms    = payment_terms;
+  hg_lv_item       = hg_lv_item;
+
+  // Reference and Accounting
+  ref_doc_ca       = ref_doc_ca;
+  ref_doc_ca_long  = ref_doc_ca_long;
+  orderid          = orderid;
+  profit_segm_no   = profit_segm_no;
+  costcenter       = costcenter;
+  wbs_elem         = wbs_elem;
+  tax_depart_cty   = tax_depart_cty;
+  tax_dest_cty     = tax_dest_cty;
+
+  // Service and Contract Info
+  serv_date        = serv_date;
+  cont_acct        = cont_acct;
+
+  // Parallel Quantity and UOM
+  parallel_qty     = parallel_qty;
+  parallel_uom     = parallel_uom;
+}
+
+}
+
+define behavior for /ZUORA001/R_BL_R //alias <alias_name>
+//late numbering
+lock dependent by CREATORDATAIN
+authorization dependent by CREATORDATAIN
+//etag master <field_name>
+{
+  update;
+  delete;
+  field ( readonly ) je_uid, customer_id;
+  association CREATORDATAIN;
+mapping for /zuora001/t_bl_r
+{
+  // Key Fields
+  je_uid         = je_uid;
+  customer_id    = customer_id;
+  bl_doc_number  = bl_doc_number;
+
+  // System Info
+  destination_system = destination_system;
+  destination_name   = destination_name;
+
+  // Error/Return Message Info
+  type         = type;
+  id           = id;
+  number_n     = number_n;
+  message      = message;
+  log_no       = log_no;
+  log_msg_no   = log_msg_no;
+  message_v1   = message_v1;
+  message_v2   = message_v2;
+  message_v3   = message_v3;
+}
+
+}
+
+
+define behavior for /ZUORA001/R_BL_N //alias <alias_name>
+//late numbering
+lock dependent by CREATORDATAIN
+authorization dependent by CREATORDATAIN
+//etag master <field_name>
+{
+  update;
+  delete;
+  field ( readonly ) je_uid, customer_id;
+  association CREATORDATAIN;
+mapping for /zuora001/t_bl_n
+{
+  // Key fields
+  je_uid          = je_uid;
+  customer_id     = customer_id;
+  bl_doc_number   = bl_doc_number;
+
+  // System Info
+  destination_system = destination_system;
+  destination_name   = destination_name;
+
+  // NFM Details
+  data_index       = data_index;
+  doc_number       = doc_number;
+  itm_number       = itm_number;
+  compcode         = compcode;
+  fiscyear         = fiscyear;
+  nfmkey           = nfmkey;
+  ratedetkey       = ratedetkey;
+  basekey          = basekey;
+  exchangekey      = exchangekey;
+  ratedetdat       = ratedetdat;
+  ratemonth        = ratemonth;
+  actratedat       = actratedat;
+  rate             = rate;
+  ratecurky        = ratecurky;
+  ratecurkyiso     = ratecurkyiso;
+  ratedoccur       = ratedoccur;
+  invoicebl        = invoicebl;
+  bvaldoccur       = bvaldoccur;
+  bvalcurkyd       = bvalcurkyd;
+  bvalcurkydiso    = bvalcurkydiso;
+  netrate          = netrate;
+  provider         = provider;
+  vendorcov        = vendorcov;
+  coverageky       = coverageky;
+  postingdays      = postingdays;
+  updtype          = updtype;
+}
+
+}
+
+
+define behavior for /ZUORA001/R_BL_S //alias <alias_name>
+//late numbering
+lock dependent by CREATORDATAIN
+authorization dependent by CREATORDATAIN
+//etag master <field_name>
+{
+  update;
+  delete;
+  field ( readonly ) je_uid, customer_id;
+  association CREATORDATAIN;
+mapping for /zuora001/t_bl_s
+{
+  // Key Fields
+  je_uid        = je_uid;
+  customer_id   = customer_id;
+  bl_doc_number = bl_doc_number;
+
+  // System Info
+  destination_system = destination_system;
+  destination_name   = destination_name;
+
+  // Billing Success Details
+  ref_doc         = ref_doc;
+  ref_doc_item    = ref_doc_item;
+  bill_doc        = bill_doc;
+  bill_doc_item   = bill_doc_item;
+  net_value       = net_value;
+  tax_value       = tax_value;
+  currency        = currency;
+  currency_iso    = currency_iso;
+  net_value_item  = net_value_item;
+  tax_value_item  = tax_value_item;
+  gro_value_item  = gro_value_item;
+}
+
+}
+
+define behavior for /ZUORA001/R_BL_T //alias <alias_name>
+//late numbering
+lock dependent by CREATORDATAIN
+authorization dependent by CREATORDATAIN
+//etag master <field_name>
+{
+  create;
+  update;
+  delete;
+  field ( readonly ) je_uid, customer_id;
+  association CREATORDATAIN;
+mapping for /zuora001/t_bl_t
+{
+  // Key Fields
+  je_uid        = je_uid;
+  customer_id   = customer_id;
+  bl_doc_number = bl_doc_number;
+
+  // System Info
+  destination_system = destination_system;
+  destination_name   = destination_name;
+
+  // Text Fields
+  ref_doc    = ref_doc;
+  ref_item   = ref_item;
+  applobject = applobject;
+  text_id    = text_id;
+  langu      = langu;
+  format_col = format_col;
+  text_line  = text_line;
+}
+
+
+}
+
+define behavior for /ZUORA001/R_BL_V //alias <alias_name>
+//late numbering
+lock dependent by CREATORDATAIN
+authorization dependent by CREATORDATAIN
+//etag master <field_name>
+{
+  update;
+  delete;
+  field ( readonly ) je_uid, customer_id;
+  association CREATORDATAIN;
+mapping for /zuora001/t_bl_v
+{
+  // Key Fields
+  je_uid        = je_uid;
+  customer_id   = customer_id;
+  bl_doc_number = bl_doc_number;
+
+  // System Info
+  destination_system = destination_system;
+  destination_name   = destination_name;
+  land_scape         = land_scape;
+
+  // Credit Card and Payment Fields
+  paytype      = paytype;
+  cc_type      = cc_type;
+  cc_number    = cc_number;
+  cc_seq_no    = cc_seq_no;
+  cc_valid_f   = cc_valid_f;
+  cc_valid_t   = cc_valid_t;
+  cc_name      = cc_name;
+  authamount   = authamount;
+  currency     = currency;
+  currency_iso = currency_iso;
+  auth_flag    = auth_flag;
+  auth_date    = auth_date;
+  auth_time    = auth_time;
+  cc_auth_no   = cc_auth_no;
+  auth_refno   = auth_refno;
+  merchidcl    = merchidcl;
+  terminal     = terminal;
+  dataorigin   = dataorigin;
+  cc_settled   = cc_settled;
+  cc_loc_id    = cc_loc_id;
+  bill_plan    = bill_plan;
+  bill_plani   = bill_plani;
+  bill_value   = bill_value;
+  cc_token     = cc_token;
+  ref_doc      = ref_doc;
+}
+
+}

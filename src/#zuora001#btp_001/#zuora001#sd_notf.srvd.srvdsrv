@@ -1,0 +1,4 @@
+@EndUserText.label: 'Notification Management service def'
+define service /ZUORA001/SD_NOTF {
+  expose /ZUORA001/C_NOTF as Notf;
+}

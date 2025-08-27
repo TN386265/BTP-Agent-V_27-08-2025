@@ -1,0 +1,35 @@
+unmanaged implementation in class /zuora001/bp_i_notf unique;
+strict ( 2 ); //Uncomment this line in order to enable strict mode 2. The strict mode has two variants (strict(1), strict(2)) and is prerequisite to be future proof regarding syntax and to be able to release your BO.
+
+define behavior for /ZUORA001/I_NOTF alias Notf
+//persistent table /zuora001/t_notf
+lock master
+authorization master ( global )
+//etag master <field_name>
+{
+  create;
+  update;
+  delete;
+  field ( readonly ) CustomerId, NotificationId;
+  field ( readonly : update ) ValidFrom;
+
+  //field ( readonly ) CreatedAt, CreatedBy, LastChangedAt, LocalChangedBy, LocalLastChangedAt;
+  field ( mandatory ) EmailNotification, ReqFailure, ReqWarnings, ReqSuccess, Status;
+  mapping for /zuora001/t_notf
+    {
+      CustomerId         = customer_id;
+      NotificationId     = notification_id;
+      ValidFrom          = valid_from;
+      ValidTo            = valid_to;
+      EmailNotification  = email_notification;
+      ReqFailure         = req_failure;
+      ReqWarnings        = req_warnings;
+      ReqSuccess         = req_success;
+      Status             = status;
+      CreatedBy          = created_by;
+      CreatedAt          = created_at;
+      LocalChangedBy     = local_changed_by;
+      LocalLastChangedAt = local_last_changed_at;
+      LastChangedAt      = last_changed_at;
+    }
+}

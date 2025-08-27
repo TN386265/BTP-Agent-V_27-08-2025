@@ -1,0 +1,4 @@
+@EndUserText.label: 'Mpapping value column service definition'
+define service /ZUORA001/SD_MAPR {
+  expose /ZUORA001/I_MAPR as Mapr;
+}

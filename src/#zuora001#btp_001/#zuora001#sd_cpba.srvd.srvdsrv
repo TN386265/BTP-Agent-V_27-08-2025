@@ -1,0 +1,4 @@
+@EndUserText.label: 'Capability of a Customer service definition'
+define service /ZUORA001/SD_CPBA {
+  expose /ZUORA001/I_CPBA as CustCapab;
+}

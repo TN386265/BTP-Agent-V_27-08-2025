@@ -1,0 +1,73 @@
+unmanaged implementation in class /zuora001/bp_r_je_revh unique;
+strict ( 1 );
+
+define behavior for /ZUORA001/R_JE_REVH //alias <alias_name>
+//late numbering
+lock master
+authorization master ( instance )
+//etag master <field_name>
+{
+  create;
+  update;
+  delete;
+  field ( readonly ) Je_Uid, Customer_id, JeDocNumber;
+  association RETURN { create; }
+
+  mapping for /zuora001/t_revh
+    {
+      // Table Fields
+      je_uid             = je_uid; // UUID for the journal entry
+      customer_id        = customer_id; // Customer ID
+      destination_system = destination_system; // Destination System Name
+      destination_name   = destination_name; // Destination Name
+      LandScape = land_scape;
+      JeDocNumber        = je_doc_number; // Journal Entry Document Number
+      ObjType            = obj_type; // Object Type
+      ObjKey             = obj_key; // Object Key
+      ObjSys             = obj_sys; // Object System
+      CompCode           = comp_code;
+      Username           = username; // Username in Journal Entry
+      DocDate            = doc_date; // Document Date
+      PstngDate          = pstng_date; // Posting Date
+      RefDocNo           = ref_doc_no; // Reference Document Number
+      AcDocNo            = ac_doc_no; // Accounting Document Number
+      ObjKeyR            = obj_key_r; // Reverse Object Key
+      ReasonRev          = reason_rev; // Reason for Reversal
+      Vatdate            = vatdate; // VAT Date
+    }
+}
+
+define behavior for /ZUORA001/R_JE_REVR //alias <alias_name>
+//late numbering
+lock dependent by documentheader
+authorization dependent by documentheader
+//etag master <field_name>
+{
+  update;
+  delete;
+  field ( readonly ) Je_Uid, JeDocNumber, itemno_acc, customer_id, Message;
+  association documentheader;
+  mapping for /zuora001/t_revr
+    {
+
+      // Key Fields
+      je_uid             = je_uid;
+      CUSTOMER_ID        = customer_id;
+      DESTINATION_SYSTEM = destination_system;
+      DESTINATION_NAME   = destination_name;
+      JeDocNumber        = je_doc_number;
+      Type               = type;
+      ResNumber          = res_number;
+      Message            = message;
+      LogNo              = log_no;
+      LogMsgNo           = log_msg_no;
+      MessageV1          = message_v1;
+      MessageV2          = message_v2;
+      MessageV3          = message_v3;
+      MessageV4          = message_v4;
+      ResParameter       = res_parameter;
+      ResRow             = res_row;
+      Field              = field;
+      ResSystem          = res_system;
+    }
+}

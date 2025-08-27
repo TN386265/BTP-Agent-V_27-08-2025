@@ -1,0 +1,30 @@
+unmanaged implementation in class /zuora001/bp_i_cust unique;
+strict ( 2 ); //Uncomment this line in order to enable strict mode 2. The strict mode has two variants (strict(1), strict(2)) and is prerequisite to be future proof regarding syntax and to be able to release your BO.
+
+define behavior for /ZUORA001/I_CUST alias Cust
+//persistent table /zuora001/t_cust
+lock master
+authorization master ( global )
+//etag master <field_name>
+{
+  create;
+  update;
+  delete;
+  field ( readonly : update ) CustomerId, ValidFrom;
+  mapping for /zuora001/t_cust
+    {
+      CustomerId         = customer_id;
+      ValidFrom          = valid_from;
+      ValidTo            = valid_to;
+      CustomerName       = customer_name;
+      ActivatedDate      = activated_date;
+      ExpiryDate         = expiry_date;
+      Active             = active;
+      Status             = status;
+      CreatedBy          = created_by;
+      CreatedAt          = created_at;
+      LocalChangedBy     = local_changed_by;
+      LocalLastChangedAt = local_last_changed_at;
+      LastChangedAt      = last_changed_at;
+    }
+}

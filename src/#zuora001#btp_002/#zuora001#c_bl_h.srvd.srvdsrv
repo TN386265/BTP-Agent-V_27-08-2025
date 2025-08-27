@@ -1,0 +1,12 @@
+@EndUserText.label: '/ZUORA001/C_BL_H'
+define service /ZUORA001/C_BL_H {
+  expose /ZUORA001/C_BL_H;
+  expose /ZUORA001/C_BL_I;
+  expose /ZUORA001/C_BL_C;
+  expose /ZUORA001/C_BL_V;
+  expose /ZUORA001/C_BL_T;
+  expose /ZUORA001/C_BL_E;
+  expose /ZUORA001/C_BL_S;
+  expose /ZUORA001/C_BL_N;
+  expose /ZUORA001/C_BL_R;
+}

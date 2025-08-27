@@ -1,0 +1,80 @@
+projection;
+strict ( 1 );
+
+define behavior for /ZUORA001/C_JE_H //alias <alias_name>
+{
+  use create;
+  use update;
+  use delete;
+
+  use association CURRENCYAMOUNT { create; }
+  use association ACCOUNTGL { create; }
+  use association ACCOUNTRECEIVABLE { create; }
+  use association ACCOUNTPAYABLE { create; }
+  use association RETURN { create; }
+  use association EXTENSION1 { create; }
+  use association EXTENSION2 { create; }
+  use association ACCOUNTTAX { create; }
+}
+
+define behavior for /ZUORA001/C_JE_C //alias <alias_name>
+{
+  use update;
+  use delete;
+
+  use association documentheader;
+}
+
+define behavior for /ZUORA001/C_JE_I //alias <alias_name>
+{
+  use update;
+  use delete;
+
+  use association documentheader;
+}
+
+define behavior for /ZUORA001/C_JE_Z //alias <alias_name>
+{
+  use update;
+  use delete;
+
+  use association documentheader;
+}
+
+define behavior for /ZUORA001/C_JE_V //alias <alias_name>
+{
+  use update;
+  use delete;
+
+  use association documentheader;
+}
+define behavior for /ZUORA001/C_JE_R //alias <alias_name>
+{
+  use update;
+  use delete;
+
+  use association documentheader;
+}
+
+define behavior for /ZUORA001/C_JE_EXTH //alias <alias_name>
+{
+  use update;
+  use delete;
+
+  use association documentheader;
+}
+
+define behavior for /ZUORA001/C_JE_EXTI //alias <alias_name>
+{
+  use update;
+  use delete;
+
+  use association documentheader;
+}
+define behavior for /ZUORA001/C_JE_T //alias <alias_name>
+{
+  use update;
+  use delete;
+
+  use association documentheader;
+}

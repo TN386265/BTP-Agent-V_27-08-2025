@@ -1,0 +1,5 @@
+@EndUserText.label: 'Service Definition for Reverse Return'
+define service /ZUORA001/C_JE_REVH {
+  expose /ZUORA001/C_JE_REVH;
+  expose /ZUORA001/C_JE_REVR;
+}

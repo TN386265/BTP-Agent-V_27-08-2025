@@ -1,0 +1,12 @@
+@EndUserText.label: 'Consumption View for Header'
+define service /ZUORA001/C_JE_H {
+  expose /ZUORA001/C_JE_H;
+  expose /ZUORA001/C_JE_I;
+  expose /ZUORA001/C_JE_C;
+  expose /ZUORA001/C_JE_Z;
+  expose /ZUORA001/C_JE_V;
+  expose /ZUORA001/C_JE_R;
+  expose /ZUORA001/C_JE_EXTH;
+  expose /ZUORA001/C_JE_EXTI;
+  expose /ZUORA001/C_JE_T;
+}

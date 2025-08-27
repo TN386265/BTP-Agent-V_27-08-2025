@@ -1,0 +1,4 @@
+@EndUserText.label: 'Customer based data read service def'
+define service /ZUORA001/SD_READALLC {
+  expose /ZUORA001/I_APIC as Apic;
+}

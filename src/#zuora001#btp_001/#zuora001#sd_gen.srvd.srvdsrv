@@ -1,0 +1,15 @@
+@EndUserText.label: 'Services used for gen purpose'
+define service /ZUORA001/SD_GEN {
+  expose /ZUORA001/I_CUSTC    as CustCount;
+  expose /ZUORA001/I_CSTAPICA as CustApiCalls;
+  expose /ZUORA001/I_CSTAPICB as CustCapbApiCalls;
+  expose /ZUORA001/I_APICN    as Apic;
+  expose /ZUORA001/I_APIA     as Apia;
+  expose /ZUORA001/C_APICEG   as Apice;
+  expose /ZUORA001/C_REVHV2G  as Revh;
+  expose /ZUORA001/C_REVRV2G  as Revr;
+  expose /ZUORA001/C_JE_HG    as Header;
+  expose /ZUORA001/C_JE_IG    as Item;
+  expose /ZUORA001/C_JE_CG    as Currency;
+  expose /ZUORA001/C_JE_RG    as Return;
+}

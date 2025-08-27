@@ -1,0 +1,4 @@
+@EndUserText.label: 'Servcie Definition for Field Mapping'
+define service /ZUORA001/SD_MAPC {
+  expose /ZUORA001/C_MAPC as Mapc;
+}

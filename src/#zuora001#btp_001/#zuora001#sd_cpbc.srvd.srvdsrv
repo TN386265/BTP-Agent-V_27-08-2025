@@ -1,0 +1,4 @@
+@EndUserText.label: 'Customer Capability service definition'
+define service /ZUORA001/SD_CPBC {
+  expose /ZUORA001/C_CPBC as CustCapb;
+}

@@ -1,0 +1,12 @@
+@EndUserText.label: 'Customer Access Control - Read only'
+@MappingRole: true
+define role /ZUORA001/R_CUST {
+    grant select on /ZUORA001/I_CUSTR;
+    grant select on /ZUORA001/I_CUSTC;        
+    
+    grant select on /ZUORA001/I_JE_H;
+    grant select on /ZUORA001/I_APICA;
+    grant select on /ZUORA001/I_CUSTA;
+    grant select on /ZUORA001/I_CSTAPICA;
+    grant select on /ZUORA001/I_CPBTA;
+}

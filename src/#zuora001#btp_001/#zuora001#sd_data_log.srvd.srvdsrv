@@ -1,0 +1,7 @@
+@EndUserText.label: 'Services used for Data Log'
+define service /ZUORA001/SD_DATA_LOG {
+  expose /ZUORA001/I_CSTLOG   as cust;
+  expose /ZUORA001/I_CPBCLOG  as custcapb;
+  expose /ZUORA001/I_DESTLOG  as dest;
+  expose /ZUORA001/I_MAPC0LOG as mapc0;
+}

@@ -1,0 +1,27 @@
+unmanaged implementation in class /zuora001/bp_i_mapu unique;
+strict ( 2 );
+
+define behavior for /ZUORA001/I_MAPU alias Mapu
+//late numbering
+lock master
+authorization master ( global )
+//etag master <field_name>
+{
+  create;
+  update;
+  delete;
+  field ( readonly : update ) CustomerId, RuleId;
+  mapping for /zuora001/t_mapu
+    {
+      CustomerId         = customer_id;
+      RuleId             = rule_id;
+      SourceData         = source_data;
+      TargetData         = target_data;
+      Status             = status;
+      CreatedBy          = created_by;
+      CreatedAt          = created_at;
+      LocalChangedBy     = local_changed_by;
+      LocalLastChangedAt = local_last_changed_at;
+      LastChangedAt      = last_changed_at;
+    }
+}

@@ -1,0 +1,5 @@
+@EndUserText.label: 'Destination Master service definition'
+define service /ZUORA001/SD_DEST {
+  expose /ZUORA001/C_DEST  as Dest;
+  expose /ZUORA001/I_DESTU as DestUnique;
+}

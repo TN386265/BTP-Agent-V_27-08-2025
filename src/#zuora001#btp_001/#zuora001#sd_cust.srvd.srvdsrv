@@ -1,0 +1,6 @@
+@EndUserText.label: 'Customer Master service definition'
+define service /ZUORA001/SD_CUST {
+  expose /ZUORA001/C_CUST  as Cust;
+  expose /ZUORA001/I_CUSTU as CustUniqueIDs;
+  expose /ZUORA001/I_CUSTL as CustL;
+}
